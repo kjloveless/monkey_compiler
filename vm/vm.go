@@ -34,6 +34,10 @@ func (vm *VM) StackTop() object.Object {
     return vm.stack[vm.sp-1]
 }
 
+func (vm *VM) LastPoppedStackElem() object.Object {
+    return vm.stack[vm.sp]
+}
+
 func (vm *VM) push(o object.Object) error {
     if vm.sp >= StackSize {
         return fmt.Errorf("stack overflow")
@@ -56,6 +60,9 @@ func (vm *VM) Run() error {
         op := code.Opcode(vm.instructions[ip])
 
         switch op{
+        case code.OpPop:
+            vm.pop()
+
         case code.OpConstant:
             constIndex := code.ReadUint16(vm.instructions[ip+1:])
             ip += 2

@@ -18,6 +18,7 @@ type Opcode byte
 var definitions = map[Opcode]*Definition{
     OpConstant: {"OpConstant", []int{2}},
     OpAdd:      {"OpAdd", []int{}},
+    OpPop:      {"OpPop", []int{}},
 }
 
 func Lookup(op byte) (*Definition, error) {
@@ -32,6 +33,7 @@ func Lookup(op byte) (*Definition, error) {
 const (
     OpConstant Opcode = iota
     OpAdd
+    OpPop
 )
 
 func ReadUint16(ins Instructions) uint16 {
