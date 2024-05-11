@@ -26,6 +26,10 @@ var definitions = map[Opcode]*Definition{
 
     OpTrue:     {"OpTrue", []int{}},
     OpFalse:    {"OpFalse", []int{}},
+
+    OpEqual:        {"OpEqual", []int{}},
+    OpNotEqual:     {"OpNotEqual", []int{}},
+    OpGreaterThan:  {"OpGreaterThan", []int{}},
 }
 
 func Lookup(op byte) (*Definition, error) {
@@ -48,6 +52,10 @@ const (
 
     OpTrue
     OpFalse
+
+    OpEqual
+    OpNotEqual
+    OpGreaterThan
 )
 
 func ReadUint16(ins Instructions) uint16 {
