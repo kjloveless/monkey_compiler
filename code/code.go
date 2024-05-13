@@ -36,6 +36,8 @@ var definitions = map[Opcode]*Definition{
 
     OpJumpNotTruthy:    {"OpJumpNotTruthy", []int{2}},
     OpJump:             {"OpJump", []int{2}},
+
+    OpNull:     {"OpNull", []int{}},
 }
 
 func Lookup(op byte) (*Definition, error) {
@@ -68,6 +70,8 @@ const (
 
     OpJumpNotTruthy
     OpJump
+
+    OpNull
 )
 
 func ReadUint16(ins Instructions) uint16 {
