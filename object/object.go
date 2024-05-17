@@ -25,7 +25,13 @@ const (
     ARRAY_OBJ               = "ARRAY"
     HASH_OBJ                = "HASH"
     COMPILED_FUNCTION_OBJ   = "COMPILED_FUNCTION_OBJ"
+    CLOSURE_OBJ             = "CLOSURE"
 )
+
+type Closure struct {
+    Fn      *CompiledFunction
+    Free    []Object
+}
 
 type CompiledFunction struct {
     Instructions    code.Instructions
@@ -128,6 +134,11 @@ func (rv *ReturnValue) Inspect() string     { return rv.Value.Inspect() }
 
 func (n *Null) Type() ObjectType    { return NULL_OBJ }
 func (n *Null) Inspect() string     { return "null" }
+
+func (c *Closure) Type() ObjectType { return CLOSURE_OBJ }
+func (c *Closure) Inspect() string {
+    return fmt.Sprintf("Closure[%p]", c)
+}
 
 func (h *Hash) Type() ObjectType    { return HASH_OBJ }
 func (h *Hash) Inspect() string     {
