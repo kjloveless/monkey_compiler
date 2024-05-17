@@ -30,6 +30,7 @@ const (
 type CompiledFunction struct {
     Instructions    code.Instructions
     NumLocals       int
+    NumParameters   int
 }
 
 type Hashable interface {
