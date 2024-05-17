@@ -28,7 +28,8 @@ const (
 )
 
 type CompiledFunction struct {
-    Instructions code.Instructions
+    Instructions    code.Instructions
+    NumLocals       int
 }
 
 type Hashable interface {
